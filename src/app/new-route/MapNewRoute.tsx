@@ -11,7 +11,8 @@ export type MapNewRouteProps = {
 export function MapNewRoute(props: MapNewRouteProps) {
   const { directionsData } = props;
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const map = useMap(mapContainerRef);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const map = useMap(mapContainerRef as any);
 
   useEffect(() => {
     if (!map || !directionsData) {
@@ -33,5 +34,5 @@ export function MapNewRoute(props: MapNewRouteProps) {
     });
   }, [map, directionsData]);
 
-  return <div className="w-2/3 h-full" ref={mapContainerRef} />;
+  return <div className="w-full h-screen" ref={mapContainerRef} />;
 }
